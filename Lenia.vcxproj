@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{FB11B28F-0C5F-44A1-8167-8F0627A59CB3}</ProjectGuid>
+    <RootNamespace>Lenia</RootNamespace>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+
+  <ImportGroup Label="ExtensionSettings">
+  <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 12.6.props" Condition="Exists('$(VCTargetsPath)\BuildCustomizations\CUDA 12.6.props')" />
+  <Import Project="$(CUDA_PATH)\extras\visual_studio_integration\MSBuildExtensions\CUDA 12.6.props" Condition="Exists('$(CUDA_PATH)\extras\visual_studio_integration\MSBuildExtensions\CUDA 12.6.props')" />
+</ImportGroup>
+
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+
+    <ClCompile>
+      <AdditionalIncludeDirectories>
+C:\Users\massa\vcpkg\installed\x64-windows\include\opencv4;
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\include;
+%(AdditionalIncludeDirectories)
+      </AdditionalIncludeDirectories>
+
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+
+      <PreprocessorDefinitions>
+WIN32;WIN64;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)
+      </PreprocessorDefinitions>
+
+    </ClCompile>
+
+    <Link>
+
+      <AdditionalLibraryDirectories>
+C:\Users\massa\vcpkg\installed\x64-windows\debug\lib;
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\lib\x64;
+%(AdditionalLibraryDirectories)
+      </AdditionalLibraryDirectories>
+
+      <AdditionalDependencies>
+cufft.lib;
+cudart_static.lib;
+opencv_core4d.lib;
+opencv_imgproc4d.lib;
+opengl32.lib;
+kernel32.lib;
+user32.lib;
+gdi32.lib;
+%(AdditionalDependencies)
+      </AdditionalDependencies>
+
+    </Link>
+
+    <CudaCompile>
+
+      <AdditionalIncludeDirectories>
+C:\Users\massa\vcpkg\installed\x64-windows\include\opencv4;
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\include;
+%(AdditionalIncludeDirectories)
+      </AdditionalIncludeDirectories>
+
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+      <CodeGeneration>compute_86,sm_86</CodeGeneration>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+
+    </CudaCompile>
+
+  </ItemDefinitionGroup>
+
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+
+    <ClCompile>
+
+      <AdditionalIncludeDirectories>
+C:\Users\massa\vcpkg\installed\x64-windows\include\opencv4;
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\include;
+%(AdditionalIncludeDirectories)
+      </AdditionalIncludeDirectories>
+
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+
+      <PreprocessorDefinitions>
+WIN32;WIN64;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)
+      </PreprocessorDefinitions>
+
+    </ClCompile>
+
+    <Link>
+
+      <AdditionalLibraryDirectories>
+C:\Users\massa\vcpkg\installed\x64-windows\lib;
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\lib\x64;
+%(AdditionalLibraryDirectories)
+      </AdditionalLibraryDirectories>
+
+      <AdditionalDependencies>
+cufft.lib;
+cudart_static.lib;
+opencv_core4.lib;
+opencv_imgproc4.lib;
+opengl32.lib;
+kernel32.lib;
+user32.lib;
+gdi32.lib;
+%(AdditionalDependencies)
+      </AdditionalDependencies>
+
+    </Link>
+
+    <CudaCompile>
+
+      <AdditionalIncludeDirectories>
+C:\Users\massa\vcpkg\installed\x64-windows\include\opencv4;
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\include;
+%(AdditionalIncludeDirectories)
+      </AdditionalIncludeDirectories>
+
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+      <CodeGeneration>compute_86,sm_86</CodeGeneration>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+
+    </CudaCompile>
+
+  </ItemDefinitionGroup>
+
+  <ItemGroup>
+    <CudaCompile Include="Device32Mode.cu" />
+    <CudaCompile Include="Device32noInteropMode.cu" />
+    <CudaCompile Include="DeviceFFT16Mode.cu" />
+    <CudaCompile Include="DeviceFFT32Mode.cu" />
+    <CudaCompile Include="DeviceFFT64Mode.cu" />
+    <CudaCompile Include="lenia.cu" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ClCompile Include="HostMode.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ClInclude Include="Device32Mode.h" />
+    <ClInclude Include="Device32noInteropMode.h" />
+    <ClInclude Include="DeviceFFT16Mode.h" />
+    <ClInclude Include="DeviceFFT32Mode.h" />
+    <ClInclude Include="DeviceFFT64Mode.h" />
+    <ClInclude Include="HostMode.h" />
+    <ClInclude Include="lenia.h" />
+    <ClInclude Include="Mode.h" />
+  </ItemGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+
+  <ImportGroup Label="ExtensionTargets">
+  <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 12.6.targets" Condition="Exists('$(VCTargetsPath)\BuildCustomizations\CUDA 12.6.targets')" />
+  <Import Project="$(CUDA_PATH)\extras\visual_studio_integration\MSBuildExtensions\CUDA 12.6.targets" Condition="Exists('$(CUDA_PATH)\extras\visual_studio_integration\MSBuildExtensions\CUDA 12.6.targets')" />
+</ImportGroup>
+
+</Project>
