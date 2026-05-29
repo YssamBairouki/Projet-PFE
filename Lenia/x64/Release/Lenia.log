@@ -1,0 +1,11 @@
+﻿  main.cpp
+     Création de la bibliothèque C:\Users\massa\Downloads\cuLenia-master_water - Copie\cuLenia-master\x64\Release\Lenia.lib et de l'objet C:\Users\massa\Downloads\cuLenia-master_water - Copie\cuLenia-master\x64\Release\Lenia.exp
+LINK : warning LNK4098: conflit entre la bibliothèque par défaut 'LIBCMT' et les autres bibliothèques ; utilisez /NODEFAULTLIB:library
+  Génération de code en cours
+  2 of 452 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  Fin de la génération du code
+  Lenia.vcxproj -> C:\Users\massa\Downloads\cuLenia-master_water - Copie\cuLenia-master\x64\Release\Lenia.exe
+  'pwsh.exe' n'est pas reconnu en tant que commande interne
+  ou externe, un programme exécutable ou un fichier de commandes.
